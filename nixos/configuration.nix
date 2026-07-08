@@ -10,6 +10,8 @@
 
   # System hostname and time
   networking.hostName = hostname;
+  networking.domain = "";
+  networking.search = [];
   time.timeZone = "UTC";
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -22,6 +24,18 @@
 
   # Networking
   networking.networkmanager.enable = true;
+  
+  # Enable mDNS for hostname resolution
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    nssmdns6 = true;
+    publish = {
+      enable = true;
+      addresses = true;
+      workstation = true;
+    };
+  };
 
   # Audio
   sound.enable = true;
