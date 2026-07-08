@@ -9,6 +9,8 @@
       "$mainMod" = "SUPER";
       "$term" = "alacritty";
       "$menu" = "rofi -show drun";
+      "$browser" = "firefox";
+      "$fileManager" = "thunar";
 
       monitor = [
         # Configure your monitor here
@@ -80,24 +82,45 @@
         workspace_swipe = false;
       };
 
-      # Keybindings
+      # Full Keyboard Bindings
       bind = [
+        # --- Application Launcher ---
         "$mainMod, Q, exec, $term"
-        "$mainMod, C, killactive, "
-        "$mainMod, M, exit, "
-        "$mainMod, E, exec, thunar"
-        "$mainMod, V, togglefloating, "
+        "$mainMod, E, exec, $fileManager"
         "$mainMod, D, exec, $menu"
+        "$mainMod, B, exec, $browser"
+        "$mainMod SHIFT, Q, exec, alacritty --floating"
+        
+        # --- Window Management ---
+        "$mainMod, C, killactive, "
+        "$mainMod, V, togglefloating, "
+        "$mainMod, F, fullscreen, 0"
+        "$mainMod SHIFT, F, fullscreen, 1"
         "$mainMod, P, pseudo, "
         "$mainMod, J, togglesplit, "
-
-        # Move focus with mainMod + arrow keys
+        "$mainMod, M, exit, "
+        
+        # --- Focus Navigation ---
         "$mainMod, left, movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
-
-        # Switch workspaces with mainMod + [0-9]
+        "$mainMod, h, movefocus, l"
+        "$mainMod, l, movefocus, r"
+        "$mainMod, k, movefocus, u"
+        "$mainMod, j, movefocus, d"
+        
+        # --- Window Movement ---
+        "$mainMod SHIFT, left, movewindow, l"
+        "$mainMod SHIFT, right, movewindow, r"
+        "$mainMod SHIFT, up, movewindow, u"
+        "$mainMod SHIFT, down, movewindow, d"
+        "$mainMod SHIFT, h, movewindow, l"
+        "$mainMod SHIFT, l, movewindow, r"
+        "$mainMod SHIFT, k, movewindow, u"
+        "$mainMod SHIFT, j, movewindow, d"
+        
+        # --- Workspace Navigation ---
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
         "$mainMod, 3, workspace, 3"
@@ -108,8 +131,8 @@
         "$mainMod, 8, workspace, 8"
         "$mainMod, 9, workspace, 9"
         "$mainMod, 0, workspace, 10"
-
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
+        
+        # --- Move Window to Workspace ---
         "$mainMod SHIFT, 1, movetoworkspace, 1"
         "$mainMod SHIFT, 2, movetoworkspace, 2"
         "$mainMod SHIFT, 3, movetoworkspace, 3"
@@ -120,14 +143,69 @@
         "$mainMod SHIFT, 8, movetoworkspace, 8"
         "$mainMod SHIFT, 9, movetoworkspace, 9"
         "$mainMod SHIFT, 0, movetoworkspace, 10"
-
-        # Scroll through existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, workspace, e+1"
-        "$mainMod, mouse_up, workspace, e-1"
-
-        # Keyboard backlight control - ThinkPad specific
+        
+        # --- Workspace Cycling ---
+        "$mainMod ALT, l, workspace, +1"
+        "$mainMod ALT, h, workspace, -1"
+        "$mainMod ALT, right, workspace, +1"
+        "$mainMod ALT, left, workspace, -1"
+        
+        # --- Window Resizing ---
+        "$mainMod CTRL, left, resizeactive, -20 0"
+        "$mainMod CTRL, right, resizeactive, 20 0"
+        "$mainMod CTRL, up, resizeactive, 0 -20"
+        "$mainMod CTRL, down, resizeactive, 0 20"
+        "$mainMod CTRL, h, resizeactive, -20 0"
+        "$mainMod CTRL, l, resizeactive, 20 0"
+        "$mainMod CTRL, k, resizeactive, 0 -20"
+        "$mainMod CTRL, j, resizeactive, 0 20"
+        
+        # --- Layout Control ---
+        "$mainMod, R, togglesplit, "
+        "$mainMod, S, pseudo, "
+        
+        # --- Special Keys ---
+        "$mainMod, tab, focusurgentorlast"
+        "$mainMod, grave, workspace, special"
+        "$mainMod SHIFT, grave, movetoworkspace, special"
+        "$mainMod, n, togglespecialworkspace, magic"
+        "$mainMod SHIFT, n, movetoworkspace, special:magic"
+        
+        # --- Screenshot & Utilities ---
+        ", Print, exec, hyprshot -m region"
+        "SHIFT, Print, exec, hyprshot -m window"
+        "$mainMod, Print, exec, hyprshot -m output"
+        
+        # --- Application Menu ---
+        "ALT, space, exec, $menu"
+        "$mainMod ALT, t, exec, $term"
+        "$mainMod ALT, e, exec, $fileManager"
+        
+        # --- Keyboard Backlight Control - ThinkPad specific ---
         ", XF86KbdBrightnessUp, exec, brightnessctl -d '*::kbd_backlight' set +10%"
         ", XF86KbdBrightnessDown, exec, brightnessctl -d '*::kbd_backlight' set 10%-"
+        
+        # --- Display Brightness Control ---
+        ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
+        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+        
+        # --- Volume Control ---
+        ", XF86AudioRaiseVolume, exec, pamixer -i 5"
+        ", XF86AudioLowerVolume, exec, pamixer -d 5"
+        ", XF86AudioMute, exec, pamixer -t"
+        
+        # --- Media Control ---
+        ", XF86AudioPlay, exec, playerctl play-pause"
+        ", XF86AudioNext, exec, playerctl next"
+        ", XF86AudioPrev, exec, playerctl previous"
+        
+        # --- Hypridle & Lock ---
+        "$mainMod SHIFT, L, exec, hyprlock"
+        "$mainMod ALT, l, exec, systemctl suspend"
+        
+        # --- Text Operations ---
+        "$mainMod, a, exec, rofi -show window"
+        "$mainMod SHIFT, s, exec, grim -g \"$(slurp)\" - | wl-copy"
       ];
 
       bindm = [
@@ -136,10 +214,18 @@
         "$mainMod, mouse:273, resizewindow"
       ];
 
+      # Scroll through existing workspaces with mainMod + scroll
+      binde = [
+        "$mainMod, mouse_down, workspace, e+1"
+        "$mainMod, mouse_up, workspace, e-1"
+      ];
+
       # Autostart
       exec-once = [
         "waybar"
         "hypridle"
+        "wl-paste --type text --watch cliphist store"
+        "wl-paste --type image --watch cliphist store"
       ];
     };
   };
@@ -153,7 +239,7 @@
         position = "top";
         modules-left = [ "hyprland/workspaces" "hyprland/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "network" "battery" "pulseaudio" ];
+        modules-right = [ "network" "battery" "pulseaudio" "backlight" "custom/backlight-kb" ];
 
         "hyprland/workspaces" = {
           format = "{name}";
@@ -171,6 +257,12 @@
         };
         "pulseaudio" = {
           format = "{volume}% 🔊";
+        };
+        "backlight" = {
+          format = "{percent}% 󰛩";
+        };
+        "custom/backlight-kb" = {
+          format = "⌨️ {alt}";
         };
       };
     };
