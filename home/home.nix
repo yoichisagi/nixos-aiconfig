@@ -6,6 +6,7 @@
 
   imports = [
     ./hyprland.nix
+    ./waybar.nix
     ./zsh.nix
     ./git.nix
   ];
@@ -26,9 +27,12 @@
     mpv
     imagemagick
     
+    # System monitoring
+    btop
+    htop
+    
     # Misc
     tldr
-    btop
   ];
 
   # Allow unfree packages

@@ -230,44 +230,6 @@
     };
   };
 
-  # Waybar configuration
-  programs.waybar = {
-    enable = true;
-    settings = {
-      mainBar = {
-        layer = "top";
-        position = "top";
-        modules-left = [ "hyprland/workspaces" "hyprland/window" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "network" "battery" "pulseaudio" "backlight" "custom/backlight-kb" ];
-
-        "hyprland/workspaces" = {
-          format = "{name}";
-        };
-        "clock" = {
-          format = "{:%H:%M}";
-        };
-        "network" = {
-          format-wifi = "󰤨 {essid}";
-          format-disconnected = "Disconnected";
-        };
-        "battery" = {
-          format = "{capacity}% {icon}";
-          format-icons = [ "" "" "" "" "" ];
-        };
-        "pulseaudio" = {
-          format = "{volume}% 🔊";
-        };
-        "backlight" = {
-          format = "{percent}% 󰛩";
-        };
-        "custom/backlight-kb" = {
-          format = "⌨️ {alt}";
-        };
-      };
-    };
-  };
-
   # Hypridle (auto-lock) configuration
   services.hypridle = {
     enable = true;
