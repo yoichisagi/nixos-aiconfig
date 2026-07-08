@@ -5,6 +5,7 @@
     ./hyprland.nix
     ./bluetooth.nix
     ./keyboard-backlight.nix
+    ./kde.nix
   ];
 
   # System hostname and time
