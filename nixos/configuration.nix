@@ -16,6 +16,9 @@
   # Boot configuration
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  
+  # Use latest Linux kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking
   networking.networkmanager.enable = true;
@@ -80,11 +83,23 @@
     brightnessctl
     acpi
     
+    # Media and volume control
+    pamixer
+    playerctl
+    grim
+    slurp
+    pavucontrol
+    
+    # Fonts for Waybar
+    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+    
     # Applications
     firefox
     alacritty
     rofi
     dunst
+    thunar
   ];
 
   # Shell
@@ -97,5 +112,5 @@
 
   # NixOS settings
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.05";
 }

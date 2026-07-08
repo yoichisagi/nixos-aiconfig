@@ -19,12 +19,6 @@
     config.common.default = "gtk";
   };
 
-  # SDDM display manager
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-
   environment.systemPackages = with pkgs; [
     # Hyprland ecosystem
     hyprland

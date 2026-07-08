@@ -1,5 +1,5 @@
 {
-  description = "NixOS Flake configuration for ThinkPad T470s with Hyprland";
+  description = "NixOS Flake configuration for ThinkPad T470s with Hyprland (Unstable)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
