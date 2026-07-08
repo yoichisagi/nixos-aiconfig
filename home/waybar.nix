@@ -5,7 +5,7 @@
     style = ''      * {
         border: none;
         border-radius: 0;
-        font-family: JetBrains Mono, monospace;
+        font-family: "JetBrains Mono", monospace;
         font-size: 12px;
         min-height: 0;
       }
@@ -130,6 +130,7 @@
 
       #temperature.critical {
         color: #f38ba8;
+        animation: blink 1s infinite;
       }
 
       #bluetooth {
@@ -145,6 +146,10 @@
       #custom-separator {
         color: #45475a;
         padding: 0 5px;
+      }
+
+      #tray {
+        padding: 0 10px;
       }
     '';
     
@@ -238,6 +243,7 @@
           format = "󰋊 {used}/{total}";
           tooltip = true;
           interval = 30;
+          path = "/";
         };
 
         "temperature" = {

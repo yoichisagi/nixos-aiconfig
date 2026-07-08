@@ -45,16 +45,19 @@
     videoDrivers = [ "intel" ];
   };
 
+  # Systemd for temperature monitoring
+  services.thermald.enable = true;
+
   # User account
   users.users.${username} = {
     isNormalUser = true;
     home = "/home/${username}";
     description = "${username}";
-    extraGroups = [ "networkmanager" "wheel" "docker" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "input" "audio" ];
     shell = pkgs.zsh;
   };
 
-  # Packages
+  # Packages - Core System
   environment.systemPackages = with pkgs; [
     # Core utilities
     git
@@ -83,16 +86,23 @@
     brightnessctl
     acpi
     
-    # Media and volume control
+    # Volume and Media Control (REQUIRED for Hyprland bindings)
     pamixer
     playerctl
+    
+    # Screenshot utilities (REQUIRED for Hyprland bindings)
     grim
     slurp
+    
+    # Audio control GUI
     pavucontrol
     
-    # Fonts for Waybar
+    # Fonts for Waybar icons and terminals
     jetbrains-mono
     nerd-fonts.jetbrains-mono
+    
+    # System monitoring
+    lm-sensors
     
     # Applications
     firefox
@@ -108,6 +118,7 @@
   # Locale
   environment.variables = {
     EDITOR = "nvim";
+    QT_QPA_PLATFORMTHEME = "kde";
   };
 
   # NixOS settings
