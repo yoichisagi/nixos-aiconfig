@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   # KDE Plasma desktop environment (backup for Hyprland)
-  services.desktopManager.kde6.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # SDDM display manager (shared with Hyprland)
   services.displayManager.sddm = {

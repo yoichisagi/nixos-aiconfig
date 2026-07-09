@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 {
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = pkgs.hyprland;
-    systemd.enable = true;
+wayland.windowManager.hyprland = {
+  enable = true;
+  configType = "hyprlang";
+  package = pkgs.hyprland;
+  systemd.enable = true;
 
     settings = {
       "$mainMod" = "SUPER";
@@ -14,7 +15,7 @@
 
       monitor = [
         # Configure your monitor here
-        # Example: "eDP-1,1920x1080@60,0x0,1"
+        "eDP-1,1920x1080@60,0x0,1"
       ];
 
       env = [
@@ -48,10 +49,12 @@
           size = 3;
           passes = 1;
         };
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
+         shadow = {
+    enabled = true;
+    range = 4;
+    render_power = 3;
+    color = "rgba(1a1a1aee)";
+  };
       };
 
       animations = {
@@ -69,18 +72,18 @@
         ];
       };
 
-      dwindle = {
-        pseudotile = true;
-        preserve_split = true;
-      };
+  #    dwindle = {
+  #      pseudotile = true;
+   #     preserve_split = true;
+   #   };
 
-      master = {
-        new_is_master = true;
-      };
+  #    master = {
+  #      new_is_master = true;
+  #    };
 
-      gestures = {
-        workspace_swipe = false;
-      };
+ #     gestures = {
+  #      workspace_swipe = false;
+  #    };
 
       # Full Keyboard Bindings
       bind = [
@@ -97,7 +100,7 @@
         "$mainMod, F, fullscreen, 0"
         "$mainMod SHIFT, F, fullscreen, 1"
         "$mainMod, P, pseudo, "
-        "$mainMod, J, togglesplit, "
+     #   "$mainMod, J, togglesplit, "
         "$mainMod, M, exit, "
         
         # --- Focus Navigation ---
@@ -161,7 +164,7 @@
         "$mainMod CTRL, j, resizeactive, 0 20"
         
         # --- Layout Control ---
-        "$mainMod, R, togglesplit, "
+    #    "$mainMod, R, togglesplit, "
         "$mainMod, S, pseudo, "
         
         # --- Special Keys ---

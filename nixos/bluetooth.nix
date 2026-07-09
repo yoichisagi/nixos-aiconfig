@@ -19,8 +19,8 @@
   environment.systemPackages = with pkgs; [
     bluez
     bluez-tools
-    blueberry  # GUI Bluetooth manager
-    pulseaudio-modules-bt  # For PulseAudio Bluetooth support
+    blueman  # GUI Bluetooth manager
+  #  pulseaudio-modules-bt  # For PulseAudio Bluetooth support
   ];
 
   # Enable udev rules for Bluetooth devices

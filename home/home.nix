@@ -2,12 +2,12 @@
 {
   home.username = username;
   home.homeDirectory = "/home/${username}";
-  home.stateVersion = "25.05";
+  home.stateVersion = "26.11";
 
   imports = [
     ./hyprland.nix
     ./waybar.nix
-    ./zsh.nix
+  #  ./zsh.nix
     ./git.nix
   ];
 
@@ -36,7 +36,7 @@
   ];
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
 
   # Home Manager should manage itself
   programs.home-manager.enable = true;

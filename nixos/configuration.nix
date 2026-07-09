@@ -12,7 +12,7 @@
   networking.hostName = hostname;
   networking.domain = "";
   networking.search = [];
-  time.timeZone = "UTC";
+  time.timeZone = "Asia/Dhaka";
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Boot configuration
@@ -38,8 +38,7 @@
   };
 
   # Audio
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -85,7 +84,7 @@
     ripgrep
     tmux
     zsh
-    
+    geany 
     # Development
     gcc
     gnumake
@@ -94,7 +93,7 @@
     # Bluetooth
     bluez
     bluez-tools
-    blueberry
+    blueman
     
     # Keyboard backlight
     brightnessctl
@@ -114,9 +113,12 @@
     # Fonts for Waybar icons and terminals
     jetbrains-mono
     nerd-fonts.jetbrains-mono
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-color-emoji
     
     # System monitoring
-    lm-sensors
+    lm_sensors
     
     # Applications
     firefox
@@ -134,7 +136,18 @@
     EDITOR = "nvim";
     QT_QPA_PLATFORMTHEME = "kde";
   };
-
+   
+nix.settings = {
+  experimental-features = [ "nix-command" "flakes" ];
+  auto-optimise-store = true;
+};
+nix.gc = {
+  automatic = true;
+  dates = "weekly";
+  options = "--delete-older-than 7d";
+};
+services.fstrim.enable = true;
+services.fwupd.enable = true;
   # NixOS settings
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.05";

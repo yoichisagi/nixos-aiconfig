@@ -4,10 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/master";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-hardware }:
@@ -15,6 +15,10 @@
       system = "x86_64-linux";
       username = "shousuke";
       hostname = "komi";
+      
+        pkgs = import nixpkgs {
+    inherit system;
+  };
     in
     {
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
@@ -33,8 +37,8 @@
         ];
       };
 
-      devShells.${system}.default = nixpkgs.mkShell {
-        buildInputs = with nixpkgs; [
+      devShells.${system}.default = pkgs.mkShell {
+        buildInputs = with pkgs; [
           git
           nixpkgs-fmt
         ];
