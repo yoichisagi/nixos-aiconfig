@@ -16,6 +16,7 @@
     # Terminal
     alacritty
     kitty
+    brave
     
     #torrent
     qbittorrent
