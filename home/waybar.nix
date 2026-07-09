@@ -19,10 +19,13 @@
         border-bottom: 1px solid rgba(205, 214, 244, 0.2);
       }
 
-      #workspaces {
-        padding: 0 10px;
+      #workspaces button {
+        transition: all 0.2s ease;
       }
-
+     
+     #workspaces button.empty {
+        opacity: 0.4;
+      }
       #workspaces button {
         padding: 3px 8px;
         margin: 3px;
@@ -93,6 +96,18 @@
         color: #45475a;
         padding: 0 5px;
       }
+      
+      #cpu,
+#memory,
+#temperature,
+#network,
+#bluetooth,
+#battery,
+#backlight,
+#pulseaudio {
+  padding: 0 8px;
+}
+      
     '';
 
     settings = {
@@ -139,16 +154,17 @@
 
 
         "hyprland/window" = {
-          format = "{}";
+          format = "{title}";
           max-length = 50;
         };
-
 
         clock = {
           format = "󰥔 {:%H:%M:%S}";
           format-alt = "󰃭 {:%A %d %B %Y}";
           interval = 1;
-          tooltip = true;
+      #    tooltip = true
+      tooltip-format = "<big>{:%A}</big>\n{:%d %B %Y}";
+      
         };
 
 
@@ -167,14 +183,14 @@
 
 
         temperature = {
-          format = "󰔏 {temperatureC}°C";
-          critical-threshold = 80;
-          tooltip = true;
+           hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
+           format = "󰔏 {temperatureC}°C";
+           critical-threshold = 80;
         };
 
 
         network = {
-          format-wifi = "󰤨 {essid}";
+          format-wifi = "󰤨 {essid} ({signalStrength}%)";
           format-ethernet = "󰈀 Ethernet";
           format-disconnected = "󰤭 Offline";
           interval = 5;
@@ -192,7 +208,7 @@
         battery = {
           format = "{icon} {capacity}%";
           format-charging = "󰂄 {capacity}%";
-
+          tooltip = true;
           format-icons = [
             "󰁺"
             "󰁻"
