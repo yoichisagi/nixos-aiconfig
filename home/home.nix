@@ -27,6 +27,13 @@
     bat
     eza
     lsd
+    jq
+    unzip
+    zip
+    wget
+    curl
+    git-lfs
+    dunst
     
     # Media
     mpv

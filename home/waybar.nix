@@ -173,7 +173,7 @@
         };
 
         clock = {
-          format = "󰥔 {:%H:%M:%S}";
+          format = "󰥔 {:%I:%M:%S %p}";
           format-alt = "󰃭 {:%A %d %B %Y}";
           interval = 1;
       #    tooltip = true
