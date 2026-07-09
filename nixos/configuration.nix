@@ -24,6 +24,7 @@
 
   # Networking
   networking.networkmanager.enable = true;
+  programs.nix-ld.enable = true;
   
   # Enable mDNS for hostname resolution
   services.avahi = {

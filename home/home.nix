@@ -17,6 +17,9 @@
     alacritty
     kitty
     
+    #torrent
+    qbittorrent
+    
     # Tools
     fd
     bat
