@@ -9,6 +9,7 @@
     ./waybar.nix
   #  ./zsh.nix
     ./git.nix
+    ./scripts.nix
   ];
 
   # Basic home packages

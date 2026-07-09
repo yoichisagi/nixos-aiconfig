@@ -87,7 +87,20 @@
       #pulseaudio {
         color: #f5c2e7;
       }
+      
+      #custom-power {
+    color: #f38ba8;
+    padding: 0 10px;
+    margin-right: 6px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
 
+#custom-power:hover {
+    background: #f38ba8;
+    color: #1e1e2e;
+}
+      
       #tray {
         padding: 0 10px;
       }
@@ -139,6 +152,7 @@
           "battery"
           "backlight"
           "pulseaudio"
+          "custom/power"
           "tray"
         ];
 
@@ -253,7 +267,12 @@
           format = "│";
         };
 
-
+"custom/power" = {
+  format = "";
+  tooltip = "Power";
+  on-click = "powermenu";
+};
+         
         tray = {
           icon-size = 16;
           spacing = 10;
