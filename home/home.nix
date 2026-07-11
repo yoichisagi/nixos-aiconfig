@@ -39,6 +39,14 @@
     mpv
     imagemagick
     
+    #office
+    onlyoffice-desktopeditors
+    corefonts
+    vista-fonts
+    liberation_ttf
+    dejavu_fonts
+    noto-fonts
+    
     # System monitoring
     btop
     htop
