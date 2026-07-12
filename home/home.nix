@@ -11,6 +11,7 @@
     ./git.nix
     ./scripts.nix
   ];
+   
 
   # Basic home packages
   home.packages = with pkgs; [
@@ -21,6 +22,10 @@
     
     #torrent
     qbittorrent
+    
+    #fish app
+    zoxide
+    starship
     
     # Tools
     fd
@@ -33,8 +38,9 @@
     wget
     curl
     git-lfs
-    dunst
-    
+   # noti
+    swaynotificationcenter
+    libnotify
     # Media
     mpv
     imagemagick
@@ -54,6 +60,19 @@
     # Misc
     tldr
   ];
+  
+  
+   xdg.mimeApps = {
+    enable = true;
+
+    defaultApplications = {
+      "inode/directory" = "thunar.desktop";
+      "application/x-gnome-saved-search" = "thunar.desktop";
+    };
+  };
+ 
+  xdg.configFile."mimeapps.list".force = true;
+  xdg.dataFile."applications/mimeapps.list".force = true; 
 
   # Allow unfree packages
   #nixpkgs.config.allowUnfree = true;

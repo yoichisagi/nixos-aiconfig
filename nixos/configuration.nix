@@ -61,7 +61,9 @@
 
   # Systemd for temperature monitoring
   services.thermald.enable = true;
-
+  services.udisks2.enable = true;  #thunar service
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
   # User account
   users.users.${username} = {
     isNormalUser = true;
@@ -120,6 +122,14 @@
     # System monitoring
     lm_sensors
     
+    
+    #thunar req package
+    gvfs
+    udisks
+    thunar-volman
+    tumbler
+    file-roller
+    
     # Applications
     firefox
     alacritty
@@ -150,5 +160,5 @@ services.fstrim.enable = true;
 services.fwupd.enable = true;
   # NixOS settings
   nixpkgs.config.allowUnfree = true;
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.11";
 }
