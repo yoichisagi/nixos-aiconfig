@@ -68,7 +68,7 @@
     home = "/home/${username}";
     description = "${username}";
     extraGroups = [ "networkmanager" "wheel" "docker" "input" "audio" ];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
   # Packages - Core System
@@ -84,7 +84,6 @@
     fzf
     ripgrep
     tmux
-    zsh
     geany 
     # Development
     gcc
@@ -130,7 +129,7 @@
   ];
 
   # Shell
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   # Locale
   environment.variables = {

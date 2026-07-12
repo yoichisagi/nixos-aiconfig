@@ -7,7 +7,7 @@
   imports = [
     ./hyprland.nix
     ./waybar.nix
-  #  ./zsh.nix
+    ./fish.nix
     ./git.nix
     ./scripts.nix
   ];
