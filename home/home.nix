@@ -59,6 +59,8 @@
     
     # Misc
     tldr
+    #photo edit
+    gimp
   ];
   
   

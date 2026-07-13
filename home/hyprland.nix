@@ -234,6 +234,27 @@ wayland.windowManager.hyprland = {
     };
   };
 
+   #wallpaper
+     services.hyprpaper = {
+    enable = true;
+
+    settings = {
+      preload = [
+        "${./wallpapers/wallpaper1.png}"
+      ];
+
+      wallpaper = [
+        {
+          monitor = "eDP-1";
+          path = "${./wallpapers/wallpaper1.png}";
+          fit_mode = "cover";
+        }
+      ];
+    };
+  };
+
+ 
+
   # Hypridle (auto-lock) configuration
   services.hypridle = {
     enable = true;

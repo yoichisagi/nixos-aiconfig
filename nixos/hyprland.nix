@@ -29,6 +29,7 @@
     waybar
     wl-clipboard
     cliphist
+    hyprpaper
     
     # Wayland utilities
     wayland
