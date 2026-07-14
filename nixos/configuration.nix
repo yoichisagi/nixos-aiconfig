@@ -6,6 +6,7 @@
     ./bluetooth.nix
     ./keyboard-backlight.nix
     ./kde.nix
+    ./stylix.nix
   ];
 
   # System hostname and time
@@ -144,7 +145,7 @@
   # Locale
   environment.variables = {
     EDITOR = "nvim";
-    QT_QPA_PLATFORMTHEME = "kde";
+ #   QT_QPA_PLATFORMTHEME = "kde";
   };
    
 nix.settings = {

@@ -3,7 +3,10 @@
   home.username = username;
   home.homeDirectory = "/home/${username}";
   home.stateVersion = "26.11";
-
+    home.pointerCursor = {
+    enable = true;
+  };
+  
   imports = [
     ./hyprland.nix
     ./waybar.nix
@@ -61,6 +64,8 @@
     tldr
     #photo edit
     gimp
+    #notebook
+    obsidian
   ];
   
   

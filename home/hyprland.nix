@@ -20,7 +20,7 @@ wayland.windowManager.hyprland = {
 
       env = [
         "XCURSOR_SIZE,24"
-        "QT_QPA_PLATFORMTHEME,qt5ct"
+   #     "QT_QPA_PLATFORMTHEME,qt5ct"
       ];
 
       input = {
@@ -37,8 +37,8 @@ wayland.windowManager.hyprland = {
         gaps_in = 5;
         gaps_out = 5;
         border_size = 2;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+   #     "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+   #    "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
       };
 
@@ -53,7 +53,7 @@ wayland.windowManager.hyprland = {
     enabled = true;
     range = 4;
     render_power = 3;
-    color = "rgba(1a1a1aee)";
+ #   color = "rgba(1a1a1aee)";  if want to use add color=lib.mkForce
   };
       };
 
@@ -240,13 +240,13 @@ wayland.windowManager.hyprland = {
 
     settings = {
       preload = [
-        "${./wallpapers/wallpaper1.png}"
+        "${./wallpapers/wallpaper_miles.jpg}"
       ];
 
       wallpaper = [
         {
           monitor = "eDP-1";
-          path = "${./wallpapers/wallpaper1.png}";
+          path = "${./wallpapers/wallpaper_miles.jpg}";
           fit_mode = "cover";
         }
       ];

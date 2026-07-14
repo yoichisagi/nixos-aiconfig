@@ -7,7 +7,7 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
-    theme = "breeze";
+ #   theme = "breeze";
   };
 
   # KDE Plasma packages
@@ -33,11 +33,11 @@
   ];
 
   # KDE Connect for device integration
-  programs.kdeconnect.enable = true;
+  #  programs.kdeconnect.enable = true;
 
   # Integrate Qt with system theme
-  qt = {
-    enable = true;
-    platformTheme = "kde";
-  };
+ # qt = {
+ #   enable = true;
+ #   platformTheme = "kde";
+ # };
 }

@@ -8,9 +8,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:nixos/nixos-hardware";
+      stylix = {
+      url = "github:danth/stylix";
+     inputs.nixpkgs.follows = "nixpkgs";
+  };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-hardware }:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, stylix, ... }:
     let
       system = "x86_64-linux";
       username = "shousuke";
@@ -25,6 +29,7 @@
         inherit system;
         specialArgs = { inherit username hostname; };
         modules = [
+          stylix.nixosModules.stylix
           nixos-hardware.nixosModules.lenovo-thinkpad-t470s
           ./nixos/configuration.nix
           home-manager.nixosModules.home-manager
