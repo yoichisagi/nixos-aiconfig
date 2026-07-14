@@ -1,19 +1,21 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   stylix = {
     enable = true;
 
     base16Scheme =
-      "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+      "${pkgs.base16-schemes}/share/themes/horizon-dark.yaml";
 
     polarity = "dark";
 
     targets = {
-      qt.enable = true;
+      qt = {
+        enable = true;
+        platform = lib.mkForce "qtct";
+      };
+
       gtk.enable = true;
- #     hyprland.enable = true;
-  #    waybar.enable = true;
     };
 
     fonts = {

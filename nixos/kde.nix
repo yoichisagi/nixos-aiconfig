@@ -36,8 +36,8 @@
   #  programs.kdeconnect.enable = true;
 
   # Integrate Qt with system theme
- # qt = {
- #   enable = true;
- #   platformTheme = "kde";
- # };
+  #qt = {
+  #  enable = true;
+  #  platformTheme = "qtct";
+  #};
 }
