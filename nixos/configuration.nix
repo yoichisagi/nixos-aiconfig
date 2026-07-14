@@ -7,6 +7,7 @@
     ./keyboard-backlight.nix
     ./kde.nix
     ./stylix.nix
+    ./power.nix
   ];
 
   # System hostname and time
